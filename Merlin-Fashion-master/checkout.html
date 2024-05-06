@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <style>
+    /* Basic styling for the form */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Checkout</h1>
+
+<form id="checkoutForm" action="https://formspree.io/f/xbjnwpqq" method="POST" redirect="index.html">
+  <h2>Billing Information</h2>
+  <label for="fullname">Full Name</label>
+  <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="john@example.com" required>
+
+  <label for="phone">Phone Number</label>
+  <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required>
+
+  <h2>Shipping Information</h2>
+  <label for="address">Address</label>
+  <input type="text" id="address" name="address" placeholder="123 Main St" required>
+
+  <label for="city">City</label>
+  <input type="text" id="city" name="city" placeholder="Anytown" required>
+
+  <label for="zip">ZIP Code</label>
+  <input type="text" id="zip" name="zip" placeholder="12345" required>
+
+  <!-- Cart Items Section -->
+  <h2>Cart Items</h2>
+  <input type="text" id="cartItems" name="cartItems" readonly placeholder="Your Cart Details">
+
+  <input type="submit" value="Place Order">
+</form>
+
+<script>
+  // Fetch cart items from local storage
+  let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Construct placeholder for cart details
+  let cartDetails = cartItems.map(item => `${item.name} - Rs.${item.price} - Quantity: ${item.quantity}`).join('\n');
+
+  // Display cart details in the placeholder
+  document.getElementById('cartItems').setAttribute('placeholder', cartDetails);
+
+  // Populate billing information if available in local storage
+  let savedBillingInfo = JSON.parse(localStorage.getItem('billingInfo'));
+  if (savedBillingInfo) {
+    document.getElementById('fullname').value = savedBillingInfo.fullname;
+    document.getElementById('email').value = savedBillingInfo.email;
+    document.getElementById('phone').value = savedBillingInfo.phone;
+  }
+
+  // Populate shipping information if available in local storage
+  let savedShippingAddress = JSON.parse(localStorage.getItem('shippingAddress'));
+  if (savedShippingAddress) {
+    document.getElementById('address').value = savedShippingAddress.address;
+    document.getElementById('city').value = savedShippingAddress.city;
+    document.getElementById('zip').value = savedShippingAddress.zip;
+  }
+
+  // Submit form event handler
+  document.querySelector('#checkoutForm').addEventListener('submit', function(e) {
+    // Validate phone number, name, and address fields
+    let phone = document.getElementById('phone').value;
+    let fullname = document.getElementById('fullname').value;
+    let address = document.getElementById('address').value;
+    let city = document.getElementById('city').value;
+    let zip = document.getElementById('zip').value;
+
+    if (!phone || !fullname || !address || !city || !zip) {
+      alert("Please fill in all required fields: Phone Number, Full Name, Address, City, and ZIP Code.");
+      e.preventDefault(); // Prevent form submission
+    } else {
+      // Save billing information to local storage
+      let billingInfo = {
+        fullname: fullname,
+        email: document.getElementById('email').value,
+        phone: phone
+      };
+      localStorage.setItem('billingInfo', JSON.stringify(billingInfo));
+
+      // Save shipping information to local storage
+      let shippingAddress = {
+        address: address,
+        city: city,
+        zip: zip
+      };
+      localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress));
+
+      // Construct message body including cart items
+      let messageBody = `Billing Information:\n`;
+      messageBody += `Full Name: ${fullname}\n`;
+      messageBody += `Email: ${document.getElementById('email').value}\n`;
+      messageBody += `Phone Number: ${phone}\n\n`;
+
+      messageBody += `Shipping Information:\n`;
+      messageBody += `Address: ${address}\n`;
+      messageBody += `City: ${city}\n`;
+      messageBody += `ZIP Code: ${zip}\n\n`;
+
+      messageBody += `Cart Items:\n`;
+      cartItems.forEach(item => {
+        messageBody += `${item.name} - Rs.${item.price} - Quantity: ${item.quantity}\n`;
+      });
+
+      // Add the message body to the hidden input field
+      document.getElementById('cartItems').value = messageBody;
+    }
+  });
+</script>
+
+</body>
+</html>
