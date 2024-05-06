@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HomePage</title>
+    <Style>
+
+.index-main-img {
+  position: relative; /* Ensure container is positioned relatively */
+}
+
+.btn-of-img {
+  position: absolute;
+  bottom: 10px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 5px; /* Button border radius */
+  padding: 10px 20px; /* Button padding */
+  font-size: 16px; /* Button font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Button hover transition */
+}
+
+.btn-of-img:hover {
+  background-color: #0056b3; /* Button background color on hover */
+}
+
+.btn-of-img {       
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.67); /* Transparent white background */
+  color: #fff; /* Button text color */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Transparent white border */
+  border-radius: 5px; /* Button border radius */
+  padding: 10px 20px; /* Button padding */
+  font-size: 16px; /* Button font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Button hover transition */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow effect */
+  z-index: 9999; /* Ensure the button stays above other content */
+}
+
+.btn-of-img:hover {
+  background: rgba(255, 255, 255, 0.5); /* Lighter transparent white background on hover */
+}
+
+    </Style>
+    
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nova+Cut|Nova+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_index.css">
+    <link rel="stylesheet" href="css/merlin.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/categories.css">
+</head> 
+<body>  
+  <!-- navbar -->
+    <nav>
+      <div class="logo">
+        <h3><a href="products.html" class="logo-name">Malika Boutique</a></h3>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="contact.html">ContactUs</a></li>
+        
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+    <!-- navbar -->
+
+    <!-- ALL THE LINKS WILL GO TO categories.html -->
+      <div class="index-main-img">
+        <a href="products.html"><img id="main-index-img" src="images/Poster_bg.png" alt="" srcset=""></a> 
+      </div>
+      <button class="btn-of-img" onclick="window.location.href = 'products.html';">Buy Now</button>
+
+      
+      <br>
+
+      <!-- <div class="index-offers-img">
+        <a href="categories.html"><img src="images/Temp.png" alt=""></a>
+        <a href="categories.html"><img src="images/Temp.png" alt=""></a>
+        <a href="categories.html"><img src="images/Temp.png" alt=""></a>
+        <a href="categories.html"><img src="images/Temp.png" alt=""></a>
+      </div> -->
+
+      <br><br>
+
+      <!-- <div class="index-grid-img-1">
+        <a href="categories.html"><img src="images/index-img/anton-levin-P8prss71psk-unsplash.jpg" alt="" srcset=""></a>
+        <a href="categories.html"><img src="images/index-img/bogdan-glisik-2WgOPYJuPsU-unsplash (1).jpg" alt="" srcset=""></a>
+        <a href="categories.html"><img src="images/index-img/calvin-lupiya--yPg8cusGD8-unsplash.jpg" alt=""></a>
+        <a href="categories.html"><h4 class="info-of-img-below">For the Young, Wild & Stylish</h4></a>          
+        <a href="categories.html"><h4 class="info-of-img-below">Just like your way to Conquer</h4></a>
+        <a href="categories.html"><h4 class="info-of-img-below">Stands out like the Sun</h4></a>
+      </div> -->
+    <!-- ALL THE LINKS WILL GO TO categories.html -->
+        
+      <br> <br> <br>
+
+      <h2 class="head-of-offer">TRENDING NOW</h2><br>
+      <p class="para-of-offer">From the runway to your wadrobe</p>
+    
+      <br><br>
+
+    <!-- ALL THE LINKS WILL GO TO products.html -->
+      <div class="index-grid-img-2">
+        <a href="products.html"><img src="images/products-img/women/kurti1.png" id="trans-img" alt=""></a> 
+        <a href="products.html"><img src="images/products-img/women/kurti2.png" alt=""></a>
+        <a href="products.html"><img src="images/products-img/women/kurti3.png" alt=""></a>
+        <a href="products.html"><img src="images/products-img/women/kurti4.png" alt="" srcset=""></a>
+        <a href="products.html"><img src="images/products-img/women/western1.png" alt="" srcset=""></a>         
+      
+    </div>
+
+      <h2 class="head-of-offer">STYLES TO STEAL</h2><br>
+      <p class="para-of-offer">Inspired by influencer</p>
+
+      <br><br>
+
+      <div class="index-grid-img-3">
+        <a href="products.html"><img src="images/products-img/women/western2.png" alt=""></a>
+        <a href="products.html"><img src="images/products-img/women/western4.png" alt="" srcset=""></a>
+      
+    </div>
+    <!-- ALL THE LINKS WILL GO TO products.html -->
+
+      <br><br>
+
+    <!-- FOOTER -->
+    <div class="footer-container">
+      <div class="footer-1">
+        <a href="index.html"><h2>Malika Boutique</h2></a>
+        <br>
+       
+    <p class="copy-right"><a href="index.html">malikaboutique</a>&copy;2024</p>
+    <br>
+  <!-- FOOTER -->
+
+  <script type="text/javascript" src="js/nav.js"></script>
+  </body>
+</html>
